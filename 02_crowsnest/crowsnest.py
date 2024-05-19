@@ -4,7 +4,6 @@ Author : Jeff Smathers <roadbike2000@duck.com>
 Date   : 2024-05-10
 Purpose: Get command-line arguments
 filename: crowsnest.py
-
 """
 
 import argparse
