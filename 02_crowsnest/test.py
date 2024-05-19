@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """tests for crowsnest.py"""
-
+from crowsnest import check_arg
 import os
 from subprocess import getstatusoutput, getoutput
 
@@ -66,3 +66,13 @@ def test_vowel_upper():
     for word in vowel_words:
         out = getoutput(f'{prg} {word.upper()}')
         assert out.strip() == template.format('an', word.upper())
+
+
+# --------------------------------------------------
+def test_check_arg():
+    assert check_arg("string") == True
+    assert check_arg("123") == False
+    assert check_arg("string123") == False
+    assert check_arg(None) == False
+    assert check_arg([]) == False
+    assert check_arg({}) == False
