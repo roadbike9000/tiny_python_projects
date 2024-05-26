@@ -25,8 +25,8 @@ def test_usage():
 
 
 # --------------------------------------------------
-def test_01():
-    """test"""
+def test_only_numbers():
+    """numbers and nothing else"""
 
     rv, out = getstatusoutput(f'{prg} 123-456-7890')
     assert rv == 0
@@ -34,9 +34,17 @@ def test_01():
 
 
 # --------------------------------------------------
-def test_02():
-    """test"""
+def test_text_with_numbers():
+    """Text with numbers xxx-xxx-xxxx"""
 
     rv, out = getstatusoutput(f'{prg} "That number to call is 098-765-4321."')
     assert rv == 0
     assert out.rstrip() == 'That number to call is 512-340-6789.'
+
+# --------------------------------------------------
+def test_text_with_numbers_2():
+    """Text with numbers (xxx) xxx xxxx """
+
+    rv, out = getstatusoutput(f'{prg} "Call (706) 890 3075."')
+    assert rv == 0
+    assert out.rstrip() == "Call (354) 215 7530."
