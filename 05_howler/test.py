@@ -26,7 +26,7 @@ def out_flag():
 
 
 # --------------------------------------------------
-def test_exists():
+def test_file_exists():
     """exists"""
 
     assert os.path.isfile(prg)
