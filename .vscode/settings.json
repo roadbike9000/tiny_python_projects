@@ -1,0 +1,13 @@
+{
+  // other settings...
+
+  "inputs": [
+    {
+      "id": "getPythonArgs",
+      "type": "promptString",
+      "description": "Enter arguments for Python script"
+    }
+  ]
+
+  // other settings...
+}

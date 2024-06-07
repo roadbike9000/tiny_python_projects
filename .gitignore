@@ -10,7 +10,7 @@ tex2pdf*
 .log
 .coverage
 .idea
-.vscode
+# .vscode
 .code-workspace
 # 02_crowsnest/crowsnest.py
 # 03_picnic/picnic.py
@@ -32,3 +32,4 @@ tex2pdf*
 # 19_wod/wod.py
 # 20_password/password.py
 # 21_tictactoe/tictactoe.py
+tiny_python_projects.code-workspace

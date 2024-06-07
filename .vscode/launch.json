@@ -1,0 +1,32 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python Debugger: Current File with Arguments",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "args": "${input:getPythonArgs}"
+    },
+    {
+      "name": "Python: Pytest",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/05_howler/test.py",
+      "args": ["-m", "pytest", "test.py:test_text_outfile"],
+      "console": "integratedTerminal",
+      "justMyCode": false // This is important to see the pytest code
+    }
+  ],
+  "inputs": [
+    {
+      "id": "getPythonArgs",
+      "type": "promptString",
+      "description": "Enter arguments for Python script"
+    }
+  ]
+}
