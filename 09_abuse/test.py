@@ -34,7 +34,7 @@ def test_bad_adjective_str():
     bad = random_string()
     rv, out = getstatusoutput(f'{prg} -a {bad}')
     assert rv != 0
-    assert re.search(f"invalid int value: '{bad}'", out)
+    assert re.search(f"Please enter a number > 0", out)
 
 
 # --------------------------------------------------
@@ -45,27 +45,27 @@ def test_bad_adjective_num():
     rv, out = getstatusoutput(f'{prg} -a {n}')
     print(out)
     assert rv != 0
-    assert re.search(f'--adjectives "{n}" must be > 0', out)
+    assert re.search(f"Please enter a number > 0", out)
 
 
 # --------------------------------------------------
-def test_bad_number_str():
-    """bad_number"""
+def test_bad_insults_str():
+    """bad_insults_number"""
 
     bad = random_string()
-    rv, out = getstatusoutput(f'{prg} -n {bad}')
+    rv, out = getstatusoutput(f'{prg} -i {bad}')
     assert rv != 0
-    assert re.search(f"invalid int value: '{bad}'", out)
+    assert re.search(f"Please enter a number > 0", out)
 
 
 # --------------------------------------------------
-def test_bad_number_int():
-    """bad_number"""
+def test_bad_insults_int():
+    """bad_insults_number"""
 
     n = random.choice(range(-10, 0))
-    rv, out = getstatusoutput(f'{prg} -n {n}')
+    rv, out = getstatusoutput(f'{prg} -i {n}')
     assert rv != 0
-    assert re.search(f'--number "{n}" must be > 0', out)
+    assert re.search(f"Please enter a number > 0", out)
 
 
 # --------------------------------------------------
@@ -75,20 +75,20 @@ def test_bad_seed():
     bad = random_string()
     rv, out = getstatusoutput(f'{prg} -s {bad}')
     assert rv != 0
-    assert re.search(f"invalid int value: '{bad}'", out)
+    assert re.search(f"Please enter a number > 0", out)
 
 
 # --------------------------------------------------
-def test_01():
-    """test"""
+def test_one_noun_seed_1():
+    """test one noun with seed 1"""
 
-    out = getoutput(f'{prg} -s 1 -n 1')
+    out = getoutput(f'{prg} -s 1 -i 1')
     assert out.strip() == 'You filthsome, cullionly fiend!'
 
 
 # --------------------------------------------------
-def test_02():
-    """test"""
+def test_seed_2():
+    """test seed 2"""
 
     out = getoutput(f'{prg} --seed 2')
     expected = """
@@ -100,10 +100,10 @@ You insatiate, heedless worm!
 
 
 # --------------------------------------------------
-def test_03():
-    """test"""
+def test_seed_3_five_insults_one_adjective():
+    """test seed 3 with five insults and one adjective"""
 
-    out = getoutput(f'{prg} -s 3 -n 5 -a 1')
+    out = getoutput(f'{prg} -s 3 -i 5 -a 1')
     expected = """
 You infected villain!
 You vile braggart!
@@ -115,10 +115,10 @@ You cullionly worm!
 
 
 # --------------------------------------------------
-def test_04():
-    """test"""
+def test_seed_4_two_insults_four_adjectives():
+    """test seed 4 with two insults and four adjectives"""
 
-    out = getoutput(f'{prg} --seed 4 --number 2 --adjectives 4')
+    out = getoutput(f'{prg} --seed 4 --insults 2 --adjectives 4')
     expected = """
 You infected, lecherous, dishonest, rotten recreant!
 You filthy, detestable, cullionly, base lunatic!
