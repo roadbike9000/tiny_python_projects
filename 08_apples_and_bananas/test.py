@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """tests for apples.py"""
 
+import random
 import re
 import os
+import string
 from subprocess import getstatusoutput, getoutput
 
 prg = './apples.py'
@@ -73,3 +75,10 @@ def test_file_with_vowel():
 
     out = getoutput(f'{prg} --vowel o {fox}')
     assert out.strip() == 'Tho qoock brown fox jomps ovor tho lozy dog.'
+
+
+
+
+
+
+
