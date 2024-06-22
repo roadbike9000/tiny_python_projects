@@ -17,6 +17,8 @@ def test_exists():
     """exists"""
 
     assert os.path.isfile(prg)
+    assert os.path.isfile(fox)
+    assert os.path.isfile(now)
 
 
 # --------------------------------------------------
@@ -40,8 +42,15 @@ def test_bad_seed_str():
 
 # --------------------------------------------------
 def test_bad_mutation_str():
-    """bad mutation str value"""
+    """Test case for bad mutation str value.
 
+    This function tests the behavior of the program when a bad mutation string value is provided.
+    It generates a random string using the `random_string` function and passes it as an argument to the program.
+    The function then checks that the return value is greater than 0 and that the output contains the expected error message.
+
+    Raises:
+        AssertionError: If the return value is not greater than 0 or if the expected error message is not found in the output.
+    """
     bad = random_string()
     rv, out = getstatusoutput(f'{prg} -m {bad} {fox}')
     assert rv > 0
@@ -50,8 +59,19 @@ def test_bad_mutation_str():
 
 # --------------------------------------------------
 def test_bad_mutation():
-    """bad mutation values"""
+    """
+    Test function for bad mutation values.
 
+    This function tests the behavior of the program when provided with invalid mutation values.
+    It iterates over a list of invalid mutation values and asserts that the return value (rv) is greater than 0,
+    indicating an error, and that the output (out) contains the expected error message.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
     for val in ['-1.0', '10.0']:
         rv, out = getstatusoutput(f'{prg} -m {val} {fox}')
         assert rv > 0
